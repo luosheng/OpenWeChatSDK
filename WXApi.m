@@ -45,7 +45,17 @@ static NSString *const WXAPIVersion = @"1.4.2";
 }
 
 + (BOOL)sendReq:(BaseReq*)req {
-	return NO;
+	NSDictionary *basicInfo = @{
+															@"result": @"1",
+															@"returnFromApp": @"0",
+															@"sdkver": WXAPIVersion
+															};
+	NSMutableDictionary *info = [NSMutableDictionary dictionaryWithDictionary:basicInfo];
+	[info addEntriesFromDictionary:[req infoDictionary]];
+	[[UIPasteboard generalPasteboard] setValue:@{WXAppID: [info copy]} forPasteboardType:@"content"];
+	
+	NSString *URLString = [NSString stringWithFormat:@"%@app/%@/sendreq/?", WXAppURL, WXAppID];
+	return [[UIApplication sharedApplication] openURL:[NSURL URLWithString:URLString]];
 }
 
 + (BOOL)sendResp:(BaseResp*)resp {
