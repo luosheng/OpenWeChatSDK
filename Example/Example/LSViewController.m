@@ -108,11 +108,25 @@ static NSString *const LSCellIdentifier = @"Cell";
 }
 
 - (void)sendImageContent {
+	WXMediaMessage *message = [WXMediaMessage message];
 	
+	[message setThumbImage:[UIImage imageNamed:@"res5thumb"]];
+	
+	WXImageObject *ext = [WXImageObject object];
+	UIImage* image = [UIImage imageNamed:@"res5.jpg"];
+	ext.imageData = UIImagePNGRepresentation(image);
+	
+	message.mediaObject = ext;
+	
+	SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
+	req.bText = NO;
+	req.message = message;
+	req.scene = self.scene;
+	
+	[WXApi sendReq:req];
 }
 
 - (void)sendLinkContent {
-	
 }
 
 - (void)sendMusicContent {
