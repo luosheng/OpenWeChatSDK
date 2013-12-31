@@ -7,6 +7,8 @@ static NSString *WXAppDescription = nil;
 
 static NSString *const WXAppURL = @"weixin://";
 static NSString *const WXAppAPIURL = @"wechat://";
+static NSString *const WXAppInstallURLString = @"http://itunes.apple.com/cn/app/id414478124?mt=8";
+static NSString *const WXAPIVersion = @"1.4.2";
 
 + (BOOL)registerApp:(NSString *)appid {
 	return [self registerApp:appid withDescription:nil];
@@ -31,11 +33,11 @@ static NSString *const WXAppAPIURL = @"wechat://";
 }
 
 + (NSString *)getWXAppInstallUrl {
-	return nil;
+	return WXAppInstallURLString;
 }
 
 + (NSString *)getApiVersion {
-	return nil;
+	return WXAPIVersion;
 }
 
 + (BOOL)openWXApp {
