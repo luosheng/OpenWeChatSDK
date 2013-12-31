@@ -21,6 +21,8 @@
 		048F35E41872B084004444BF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 048F35C61872B084004444BF /* UIKit.framework */; };
 		048F35EC1872B084004444BF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 048F35EA1872B084004444BF /* InfoPlist.strings */; };
 		048F35EE1872B084004444BF /* ExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F35ED1872B084004444BF /* ExampleTests.m */; };
+		048F35FB1872B122004444BF /* WXApiObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F35F71872B122004444BF /* WXApiObject.m */; };
+		048F35FC1872B122004444BF /* WXApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F35F91872B122004444BF /* WXApi.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,10 @@
 		048F35E91872B084004444BF /* ExampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ExampleTests-Info.plist"; sourceTree = "<group>"; };
 		048F35EB1872B084004444BF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		048F35ED1872B084004444BF /* ExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleTests.m; sourceTree = "<group>"; };
+		048F35F71872B122004444BF /* WXApiObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WXApiObject.m; path = ../WXApiObject.m; sourceTree = "<group>"; };
+		048F35F81872B122004444BF /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApiObject.h; path = ../WXApiObject.h; sourceTree = "<group>"; };
+		048F35F91872B122004444BF /* WXApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WXApi.m; path = ../WXApi.m; sourceTree = "<group>"; };
+		048F35FA1872B122004444BF /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApi.h; path = ../WXApi.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +88,7 @@
 		048F35B61872B084004444BF = {
 			isa = PBXGroup;
 			children = (
+				048F35FD1872B128004444BF /* WeChat */,
 				048F35C81872B084004444BF /* Example */,
 				048F35E71872B084004444BF /* ExampleTests */,
 				048F35C11872B084004444BF /* Frameworks */,
@@ -150,6 +157,17 @@
 				048F35EA1872B084004444BF /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		048F35FD1872B128004444BF /* WeChat */ = {
+			isa = PBXGroup;
+			children = (
+				048F35FA1872B122004444BF /* WXApi.h */,
+				048F35F91872B122004444BF /* WXApi.m */,
+				048F35F81872B122004444BF /* WXApiObject.h */,
+				048F35F71872B122004444BF /* WXApiObject.m */,
+			);
+			name = WeChat;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,9 +268,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				048F35FB1872B122004444BF /* WXApiObject.m in Sources */,
 				048F35CF1872B084004444BF /* main.m in Sources */,
 				048F35D31872B084004444BF /* LSAppDelegate.m in Sources */,
 				048F35D91872B084004444BF /* LSViewController.m in Sources */,
+				048F35FC1872B122004444BF /* WXApi.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +481,7 @@
 				048F35F31872B084004444BF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		048F35F41872B084004444BF /* Build configuration list for PBXNativeTarget "ExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +490,7 @@
 				048F35F61872B084004444BF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
