@@ -23,6 +23,17 @@
 		048F35EE1872B084004444BF /* ExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F35ED1872B084004444BF /* ExampleTests.m */; };
 		048F35FB1872B122004444BF /* WXApiObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F35F71872B122004444BF /* WXApiObject.m */; };
 		048F35FC1872B122004444BF /* WXApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F35F91872B122004444BF /* WXApi.m */; };
+		048F360A1872DADA004444BF /* ML.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 048F35FF1872DADA004444BF /* ML.pdf */; };
+		048F360B1872DADA004444BF /* res1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 048F36001872DADA004444BF /* res1.jpg */; };
+		048F360C1872DADA004444BF /* res2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 048F36011872DADA004444BF /* res2.jpg */; };
+		048F360D1872DADA004444BF /* res2.png in Resources */ = {isa = PBXBuildFile; fileRef = 048F36021872DADA004444BF /* res2.png */; };
+		048F360E1872DADA004444BF /* res3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 048F36031872DADA004444BF /* res3.jpg */; };
+		048F360F1872DADA004444BF /* res4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 048F36041872DADA004444BF /* res4.jpg */; };
+		048F36101872DADA004444BF /* res5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 048F36051872DADA004444BF /* res5.jpg */; };
+		048F36111872DADA004444BF /* res5thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 048F36061872DADA004444BF /* res5thumb.png */; };
+		048F36121872DADA004444BF /* res6.gif in Resources */ = {isa = PBXBuildFile; fileRef = 048F36071872DADA004444BF /* res6.gif */; };
+		048F36131872DADA004444BF /* res6thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 048F36081872DADA004444BF /* res6thumb.png */; };
+		048F36141872DADA004444BF /* res7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 048F36091872DADA004444BF /* res7.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +70,17 @@
 		048F35F81872B122004444BF /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApiObject.h; path = ../WXApiObject.h; sourceTree = "<group>"; };
 		048F35F91872B122004444BF /* WXApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WXApi.m; path = ../WXApi.m; sourceTree = "<group>"; };
 		048F35FA1872B122004444BF /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApi.h; path = ../WXApi.h; sourceTree = "<group>"; };
+		048F35FF1872DADA004444BF /* ML.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ML.pdf; sourceTree = "<group>"; };
+		048F36001872DADA004444BF /* res1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = res1.jpg; sourceTree = "<group>"; };
+		048F36011872DADA004444BF /* res2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = res2.jpg; sourceTree = "<group>"; };
+		048F36021872DADA004444BF /* res2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = res2.png; sourceTree = "<group>"; };
+		048F36031872DADA004444BF /* res3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = res3.jpg; sourceTree = "<group>"; };
+		048F36041872DADA004444BF /* res4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = res4.jpg; sourceTree = "<group>"; };
+		048F36051872DADA004444BF /* res5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = res5.jpg; sourceTree = "<group>"; };
+		048F36061872DADA004444BF /* res5thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = res5thumb.png; sourceTree = "<group>"; };
+		048F36071872DADA004444BF /* res6.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = res6.gif; sourceTree = "<group>"; };
+		048F36081872DADA004444BF /* res6thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = res6thumb.png; sourceTree = "<group>"; };
+		048F36091872DADA004444BF /* res7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = res7.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +155,7 @@
 		048F35C91872B084004444BF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				048F35FE1872DADA004444BF /* Resources */,
 				048F35CA1872B084004444BF /* Example-Info.plist */,
 				048F35CB1872B084004444BF /* InfoPlist.strings */,
 				048F35CE1872B084004444BF /* main.m */,
@@ -169,6 +192,24 @@
 			);
 			name = WeChat;
 			sourceTree = "<group>";
+		};
+		048F35FE1872DADA004444BF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				048F35FF1872DADA004444BF /* ML.pdf */,
+				048F36001872DADA004444BF /* res1.jpg */,
+				048F36011872DADA004444BF /* res2.jpg */,
+				048F36021872DADA004444BF /* res2.png */,
+				048F36031872DADA004444BF /* res3.jpg */,
+				048F36041872DADA004444BF /* res4.jpg */,
+				048F36051872DADA004444BF /* res5.jpg */,
+				048F36061872DADA004444BF /* res5thumb.png */,
+				048F36071872DADA004444BF /* res6.gif */,
+				048F36081872DADA004444BF /* res6thumb.png */,
+				048F36091872DADA004444BF /* res7.jpg */,
+			);
+			path = Resources;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -248,8 +289,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				048F35DB1872B084004444BF /* Images.xcassets in Resources */,
+				048F360C1872DADA004444BF /* res2.jpg in Resources */,
+				048F360B1872DADA004444BF /* res1.jpg in Resources */,
 				048F35CD1872B084004444BF /* InfoPlist.strings in Resources */,
+				048F36141872DADA004444BF /* res7.jpg in Resources */,
+				048F36121872DADA004444BF /* res6.gif in Resources */,
+				048F36111872DADA004444BF /* res5thumb.png in Resources */,
+				048F360F1872DADA004444BF /* res4.jpg in Resources */,
+				048F360E1872DADA004444BF /* res3.jpg in Resources */,
+				048F36101872DADA004444BF /* res5.jpg in Resources */,
 				048F35D61872B084004444BF /* Main.storyboard in Resources */,
+				048F360D1872DADA004444BF /* res2.png in Resources */,
+				048F360A1872DADA004444BF /* ML.pdf in Resources */,
+				048F36131872DADA004444BF /* res6thumb.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
