@@ -5,6 +5,9 @@
 static NSString *WXAppID = nil;
 static NSString *WXAppDescription = nil;
 
+static NSString *const WXAppURL = @"weixin://";
+static NSString *const WXAppAPIURL = @"wechat://";
+
 + (BOOL)registerApp:(NSString *)appid {
 	return [self registerApp:appid withDescription:nil];
 }
@@ -20,11 +23,11 @@ static NSString *WXAppDescription = nil;
 }
 
 + (BOOL)isWXAppInstalled {
-	return NO;
+	return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:WXAppURL]];
 }
 
 + (BOOL)isWXAppSupportApi {
-	return NO;
+	return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:WXAppAPIURL]];;
 }
 
 + (NSString *)getWXAppInstallUrl {
