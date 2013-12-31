@@ -39,7 +39,7 @@ static NSString *const WXAppAPIURL = @"wechat://";
 }
 
 + (BOOL)openWXApp {
-	return NO;
+	return [[UIApplication sharedApplication] openURL:[NSURL URLWithString:WXAppURL]];
 }
 
 + (BOOL)sendReq:(BaseReq*)req {
