@@ -34,7 +34,14 @@ static NSString *const LSCellIdentifier = @"Cell";
 							 @"发送非 gif 表情给微信",
 							 @"发送 gif 表情给微信",
 							 ];
-		_actions = @[[NSValue valueWithPointer:@selector(sendTextContent)]];
+		_actions = @[[NSValue valueWithPointer:@selector(sendTextContent)],
+								 [NSValue valueWithPointer:@selector(sendImageContent)],
+								 [NSValue valueWithPointer:@selector(sendLinkContent)],
+								 [NSValue valueWithPointer:@selector(sendMusicContent)],
+								 [NSValue valueWithPointer:@selector(sendVideoContent)],
+								 [NSValue valueWithPointer:@selector(sendAppContent)],
+								 [NSValue valueWithPointer:@selector(sendNonGifContent)],
+								 [NSValue valueWithPointer:@selector(sendGifContent)]];
 	}
 	return self;
 }
@@ -98,6 +105,34 @@ static NSString *const LSCellIdentifier = @"Cell";
 	req.scene = self.scene;
 	
 	[WXApi sendReq:req];
+}
+
+- (void)sendImageContent {
+	
+}
+
+- (void)sendLinkContent {
+	
+}
+
+- (void)sendMusicContent {
+	
+}
+
+- (void)sendVideoContent {
+	
+}
+
+- (void)sendAppContent {
+	
+}
+
+- (void)sendNonGifContent {
+	
+}
+
+- (void)sendGifContent {
+	
 }
 
 @end
