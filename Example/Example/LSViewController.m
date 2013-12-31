@@ -12,6 +12,7 @@
 
 @property (nonatomic, readonly) UISegmentedControl *sceneSegmentedControl;
 @property (nonatomic, readonly) NSArray *items;
+@property (nonatomic, readonly) NSArray *actions;
 
 @end
 
@@ -32,6 +33,7 @@ static NSString *const LSCellIdentifier = @"Cell";
 							 @"发送非 gif 表情给微信",
 							 @"发送 gif 表情给微信",
 							 ];
+		_actions = @[[NSValue valueWithPointer:@selector(sendTextContent)]];
 	}
 	return self;
 }
@@ -69,7 +71,13 @@ static NSString *const LSCellIdentifier = @"Cell";
 #pragma mark - UITableView delegate methods
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	[self sendTextContent];
+	NSUInteger index = indexPath.row > self.actions.count - 1 ? 0 : indexPath.row;
+	NSValue *value = self.actions[index];
+	SEL selector = [value pointerValue];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+	[self performSelector:selector];
+#pragma clang diagnostic pop
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
