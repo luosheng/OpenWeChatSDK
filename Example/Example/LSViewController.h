@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WXApi.h"
 
 @interface LSViewController : UITableViewController
 
