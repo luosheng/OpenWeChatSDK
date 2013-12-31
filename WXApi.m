@@ -2,12 +2,17 @@
 
 @implementation WXApi
 
+static NSString *WXAppID = nil;
+static NSString *WXAppDescription = nil;
+
 + (BOOL)registerApp:(NSString *)appid {
-	return NO;
+	return [self registerApp:appid withDescription:nil];
 }
 
 + (BOOL)registerApp:(NSString *)appid withDescription:(NSString *)appdesc {
-	return NO;
+	WXAppID = appid;
+	WXAppDescription = appdesc;
+	return YES;
 }
 
 + (BOOL)handleOpenURL:(NSURL *)url delegate:(id<WXApiDelegate>)delegate {
