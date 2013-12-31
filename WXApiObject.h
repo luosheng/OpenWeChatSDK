@@ -156,7 +156,7 @@ enum WXScene {
  */
 @interface WXMediaMessage : NSObject
 
-+(WXMediaMessage *) message;
++ (instancetype)message;
 
 /** 标题
  * @attention 长度不能超过512字节
@@ -188,18 +188,21 @@ enum WXScene {
 
 
 #pragma mark -
+
+@interface WXMediaObject : NSObject
+
++ (instancetype)object;
+
+@end
+
+
 /*! @brief 多媒体消息中包含的图片数据对象
  *
  * 微信终端和第三方程序之间传递消息中包含的图片数据对象。
  * @attention imageData和imageUrl成员不能同时为空
  * @see WXMediaMessage
  */
-@interface WXImageObject : NSObject
-/*! @brief 返回一个WXImageObject对象
- *
- * @note 返回的WXImageObject对象是自动释放的
- */
-+(WXImageObject *) object;
+@interface WXImageObject : WXMediaObject
 
 /** 图片真实数据内容
  * @attention 大小不能超过10M
@@ -218,12 +221,7 @@ enum WXScene {
  * @attention musicUrl和musicLowBandUrl成员不能同时为空。
  * @see WXMediaMessage
  */
-@interface WXMusicObject : NSObject
-/*! @brief 返回一个WXMusicObject对象
- *
- * @note 返回的WXMusicObject对象是自动释放的
- */
-+(WXMusicObject *) object;
+@interface WXMusicObject : WXMediaObject
 
 /** 音乐网页的url地址
  * @attention 长度不能超过10K
@@ -251,12 +249,7 @@ enum WXScene {
  * @attention videoUrl和videoLowBandUrl不能同时为空。
  * @see WXMediaMessage
  */
-@interface WXVideoObject : NSObject
-/*! @brief 返回一个WXVideoObject对象
- *
- * @note 返回的WXVideoObject对象是自动释放的
- */
-+(WXVideoObject *) object;
+@interface WXVideoObject : WXMediaObject
 
 /** 视频网页的url地址
  * @attention 长度不能超过10K
@@ -274,12 +267,7 @@ enum WXScene {
  * 微信终端和第三方程序之间传递消息中包含的网页数据对象。
  * @see WXMediaMessage
  */
-@interface WXWebpageObject : NSObject
-/*! @brief 返回一个WXWebpageObject对象
- *
- * @note 返回的WXWebpageObject对象是自动释放的
- */
-+(WXWebpageObject *) object;
+@interface WXWebpageObject : WXMediaObject
 
 /** 网页的url地址
  * @attention 不能为空且长度不能超过10K
@@ -295,12 +283,7 @@ enum WXScene {
  * @note extInfo和fileData不能同时为空
  * @see WXMediaMessage
  */
-@interface WXAppExtendObject : NSObject
-/*! @brief 返回一个WXAppExtendObject对象
- *
- * @note 返回的WXAppExtendObject对象是自动释放的
- */
-+(WXAppExtendObject *) object;
+@interface WXAppExtendObject : WXMediaObject
 
 /** App文件数据，该数据发送给微信好友，微信好友需要点击后下载数据，微信终端会回传给第三方程序处理
  * @attention 大小不能超过10M
@@ -324,13 +307,7 @@ enum WXScene {
  * 微信终端和第三方程序之间传递消息中包含的表情数据对象。
  * @see WXMediaMessage
  */
-@interface WXEmoticonObject : NSObject
-
-/*! @brief 返回一个WXEmoticonObject对象
- *
- * @note 返回的WXEmoticonObject对象是自动释放的
- */
-+(WXEmoticonObject *) object;
+@interface WXEmoticonObject : WXMediaObject
 
 /** 表情真实数据内容
  * @attention 大小不能超过10M
@@ -343,13 +320,7 @@ enum WXScene {
  *
  * @see WXMediaMessage
  */
-@interface WXFileObject : NSObject
-
-/*! @brief 返回一个WXFileObject对象
- *
- * @note 返回的WXFileObject对象是自动释放的
- */
-+(WXFileObject *) object;
+@interface WXFileObject : WXMediaObject
 
 /** 文件后缀名
  * @attention 长度不超过64字节

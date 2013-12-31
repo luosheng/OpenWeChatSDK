@@ -42,6 +42,20 @@
 @end
 
 @implementation WXMediaMessage
+
++ (instancetype)message {
+	return [[self alloc] init];
+}
+
+@end
+
+
+@implementation WXMediaObject
+
++ (instancetype)object {
+	return [[self alloc] init];
+}
+
 @end
 
 @implementation WXImageObject
