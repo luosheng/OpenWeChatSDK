@@ -50,7 +50,7 @@ enum WXScene {
 /** 错误码 */
 @property (nonatomic, assign) int errCode;
 /** 错误提示字符串 */
-@property (nonatomic, retain) NSString *errStr;
+@property (nonatomic, strong) NSString *errStr;
 /** 响应类型 */
 @property (nonatomic, assign) int type;
 
@@ -68,11 +68,11 @@ enum WXScene {
 /** 发送消息的文本内容
  * @attention 文本长度必须大于0且小于10K
  */
-@property (nonatomic, retain) NSString* text;
+@property (nonatomic, strong) NSString* text;
 /** 发送消息的多媒体内容
  * @see WXMediaMessage
  */
-@property (nonatomic, retain) WXMediaMessage* message;
+@property (nonatomic, strong) WXMediaMessage* message;
 /** 发送消息的类型，包括文本消息和多媒体消息两种
  * @attention 两者只能选择其一，不能同时发送文本和多媒体消息
  */
@@ -109,11 +109,11 @@ enum WXScene {
 /** 向微信终端提供的文本内容
  * @attention 文本长度必须大于0且小于10K
  */
-@property (nonatomic, retain) NSString* text;
+@property (nonatomic, strong) NSString* text;
 /** 向微信终端提供的多媒体内容。
  * @see WXMediaMessage
  */
-@property (nonatomic, retain) WXMediaMessage* message;
+@property (nonatomic, strong) WXMediaMessage* message;
 /** 向微信终端提供内容的消息类型，包括文本消息和多媒体消息两种
  * @attention 两者只能选择其一，不能同时发送文本和多媒体消息 
  */
@@ -129,7 +129,7 @@ enum WXScene {
 /** 微信终端向第三方程序发送的要求第三方程序处理的多媒体内容
  * @see WXMediaMessage
  */
-@property (nonatomic, retain) WXMediaMessage* message;
+@property (nonatomic, strong) WXMediaMessage* message;
 @end
 
 /*! @brief 微信通知第三方程序，要求第三方程序显示或处理某些消息，第三方程序处理完后向微信终端发送的处理结果。
@@ -161,21 +161,21 @@ enum WXScene {
 /** 标题
  * @attention 长度不能超过512字节
  */
-@property (nonatomic, retain) NSString *title;
+@property (nonatomic, strong) NSString *title;
 /** 描述内容
  * @attention 长度不能超过1K
  */
-@property (nonatomic, retain) NSString *description;
+@property (nonatomic, strong) NSString *description;
 /** 缩略图数据
  * @attention 内存大小不能超过32K
  */
-@property (nonatomic, retain) NSData   *thumbData;
+@property (nonatomic, strong) NSData   *thumbData;
 /** 多媒体消息标签，第三方程序可选填此字段，用于数据运营统计等
  * @attention 长度不能超过64字节
  */
-@property (nonatomic, retain) NSString *mediaTagName;
+@property (nonatomic, strong) NSString *mediaTagName;
 /** 多媒体数据对象，可以为WXImageObject，WXMusicObject，WXVideoObject，WXWebpageObject等。 */
-@property (nonatomic, retain) id        mediaObject;
+@property (nonatomic, strong) id        mediaObject;
 
 /*! @brief 设置消息缩略图的方法
  *
@@ -204,11 +204,11 @@ enum WXScene {
 /** 图片真实数据内容
  * @attention 大小不能超过10M
  */
-@property (nonatomic, retain) NSData    *imageData;
+@property (nonatomic, strong) NSData    *imageData;
 /** 图片url
  * @attention 长度不能超过10K
  */
-@property (nonatomic, retain) NSString  *imageUrl;
+@property (nonatomic, strong) NSString  *imageUrl;
 
 @end
 
@@ -228,20 +228,20 @@ enum WXScene {
 /** 音乐网页的url地址
  * @attention 长度不能超过10K
  */
-@property (nonatomic, retain) NSString *musicUrl;
+@property (nonatomic, strong) NSString *musicUrl;
 /** 音乐lowband网页的url地址
  * @attention 长度不能超过10K
  */
-@property (nonatomic, retain) NSString *musicLowBandUrl;
+@property (nonatomic, strong) NSString *musicLowBandUrl;
 /** 音乐数据url地址
  * @attention 长度不能超过10K
  */
-@property (nonatomic, retain) NSString *musicDataUrl;
+@property (nonatomic, strong) NSString *musicDataUrl;
 
 /**音乐lowband数据url地址
  * @attention 长度不能超过10K
  */
-@property (nonatomic, retain) NSString *musicLowBandDataUrl;
+@property (nonatomic, strong) NSString *musicLowBandDataUrl;
 
 @end
 
@@ -261,11 +261,11 @@ enum WXScene {
 /** 视频网页的url地址
  * @attention 长度不能超过10K
  */
-@property (nonatomic, retain) NSString *videoUrl;
+@property (nonatomic, strong) NSString *videoUrl;
 /** 视频lowband网页的url地址
  * @attention 长度不能超过10K
  */
-@property (nonatomic, retain) NSString *videoLowBandUrl;
+@property (nonatomic, strong) NSString *videoLowBandUrl;
 
 @end
 
@@ -284,7 +284,7 @@ enum WXScene {
 /** 网页的url地址
  * @attention 不能为空且长度不能超过10K
  */
-@property (nonatomic, retain) NSString *webpageUrl;
+@property (nonatomic, strong) NSString *webpageUrl;
 
 @end
 
@@ -305,17 +305,17 @@ enum WXScene {
 /** App文件数据，该数据发送给微信好友，微信好友需要点击后下载数据，微信终端会回传给第三方程序处理
  * @attention 大小不能超过10M
  */
-@property (nonatomic, retain) NSData   *fileData;
+@property (nonatomic, strong) NSData   *fileData;
 
 /** 第三方程序自定义简单数据，微信终端会回传给第三方程序处理
  * @attention 长度不能超过2K
  */
-@property (nonatomic, retain) NSString *extInfo;
+@property (nonatomic, strong) NSString *extInfo;
 
 /**
  * @attention Deprecated
  */
-@property (nonatomic, retain) NSString *url;
+@property (nonatomic, strong) NSString *url;
 
 @end
 
@@ -335,7 +335,7 @@ enum WXScene {
 /** 表情真实数据内容
  * @attention 大小不能超过10M
  */
-@property (nonatomic, retain) NSData    *emoticonData;
+@property (nonatomic, strong) NSData    *emoticonData;
 
 @end
 
@@ -354,11 +354,11 @@ enum WXScene {
 /** 文件后缀名
  * @attention 长度不超过64字节
  */
-@property (nonatomic, retain) NSString  *fileExtension;
+@property (nonatomic, strong) NSString  *fileExtension;
 
 /** 文件真实数据内容
  * @attention 大小不能超过10M
  */
-@property (nonatomic, retain) NSData    *fileData;
+@property (nonatomic, strong) NSData    *fileData;
 
 @end
