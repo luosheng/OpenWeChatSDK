@@ -66,6 +66,13 @@ static NSString *const LSCellIdentifier = @"Cell";
 	return cell;
 }
 
+#pragma mark - UITableView delegate methods
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	[self sendTextContent];
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
 #pragma mark - WeChat API actions
 
 - (void)sendTextContent {
