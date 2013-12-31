@@ -1,12 +1,26 @@
 #import "WXApiObject.h"
 
 @implementation BaseReq
+
+- (NSDictionary *)infoDictionary {
+	return nil;
+}
+
 @end
 
 @implementation BaseResp
 @end
 
 @implementation SendMessageToWXReq
+
+- (NSDictionary *)infoDictionary {
+	return @{
+					 @"command": @1020,
+					 @"title": self.text,
+					 @"scene": @(self.scene),
+					 };
+}
+
 @end
 
 @implementation SendMessageToWXResp

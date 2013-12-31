@@ -38,6 +38,9 @@ enum WXScene {
 
 /** 请求类型 */
 @property (nonatomic, assign) int type;
+
+- (NSDictionary *)infoDictionary;
+
 @end
 
 /*! @brief 该类为微信终端SDK所有响应类的基类
