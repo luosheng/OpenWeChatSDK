@@ -1,5 +1,17 @@
 #import "WXApiObject.h"
 
+@interface WXMediaMessage ()
+
+- (NSDictionary *)infoDictionary;
+
+@end
+
+@interface WXMediaObject ()
+
+- (NSDictionary *)infoDictionary;
+
+@end
+
 @implementation BaseReq
 
 - (NSDictionary *)infoDictionary {
@@ -14,11 +26,16 @@
 @implementation SendMessageToWXReq
 
 - (NSDictionary *)infoDictionary {
-	return @{
-					 @"command": @1020,
-					 @"title": self.text,
-					 @"scene": @(self.scene),
-					 };
+	NSMutableDictionary *info = [NSMutableDictionary dictionary];
+	info[@"scene"] = @(self.scene);
+	if (self.bText) {
+		info[@"command"] = @1020;
+		info[@"title"] = self.text;
+	} else {
+		info[@"command"] = @1010;
+		[info addEntriesFromDictionary:[self.message infoDictionary]];
+	}
+	return info;
 }
 
 @end
@@ -47,6 +64,18 @@
 	return [[self alloc] init];
 }
 
+- (void)setThumbImage:(UIImage *)image {
+	// TODO: thumb image manipulations
+	self.thumbData = UIImagePNGRepresentation(image);
+}
+
+- (NSDictionary *)infoDictionary {
+	NSMutableDictionary *info = [NSMutableDictionary dictionary];
+	info[@"thumbData"] = self.thumbData;
+	[info addEntriesFromDictionary:[self.mediaObject infoDictionary]];
+	return info;
+}
+
 @end
 
 
@@ -56,9 +85,21 @@
 	return [[self alloc] init];
 }
 
+- (NSDictionary *)infoDictionary {
+	return nil;
+}
+
 @end
 
 @implementation WXImageObject
+
+- (NSDictionary *)infoDictionary {
+	return @{
+					 @"fileData": self.imageData,
+					 @"objectType": @2,
+					 };
+}
+
 @end
 
 @implementation WXMusicObject

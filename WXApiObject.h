@@ -150,6 +150,8 @@ enum WXScene {
 
 #pragma mark - WXMediaMessage
 
+@class WXMediaObject;
+
 /*! @brief 多媒体消息结构体
  *
  * 用于微信终端和第三方程序之间传递消息的多媒体消息内容
@@ -175,7 +177,7 @@ enum WXScene {
  */
 @property (nonatomic, strong) NSString *mediaTagName;
 /** 多媒体数据对象，可以为WXImageObject，WXMusicObject，WXVideoObject，WXWebpageObject等。 */
-@property (nonatomic, strong) id        mediaObject;
+@property (nonatomic, strong) WXMediaObject *mediaObject;
 
 /*! @brief 设置消息缩略图的方法
  *
