@@ -33,6 +33,7 @@ static NSString *const LSCellIdentifier = @"Cell";
 							 @"发送 App 消息给微信",
 							 @"发送非 gif 表情给微信",
 							 @"发送 gif 表情给微信",
+							 @"发送文件消息给微信",
 							 ];
 		_actions = @[[NSValue valueWithPointer:@selector(sendTextContent)],
 								 [NSValue valueWithPointer:@selector(sendImageContent)],
@@ -41,7 +42,8 @@ static NSString *const LSCellIdentifier = @"Cell";
 								 [NSValue valueWithPointer:@selector(sendVideoContent)],
 								 [NSValue valueWithPointer:@selector(sendAppContent)],
 								 [NSValue valueWithPointer:@selector(sendNonGifContent)],
-								 [NSValue valueWithPointer:@selector(sendGifContent)]];
+								 [NSValue valueWithPointer:@selector(sendGifContent)],
+								 [NSValue valueWithPointer:@selector(sendFileContent)]];
 	}
 	return self;
 }
@@ -212,6 +214,27 @@ static NSString *const LSCellIdentifier = @"Cell";
 	WXEmoticonObject *ext = [WXEmoticonObject object];
 	NSString *filePath = [[NSBundle mainBundle] pathForResource:@"res6" ofType:@"gif"];
 	ext.emoticonData = [NSData dataWithContentsOfFile:filePath] ;
+	
+	message.mediaObject = ext;
+	
+	SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
+	req.bText = NO;
+	req.message = message;
+	req.scene = self.scene;
+	
+	[WXApi sendReq:req];
+}
+
+- (void)sendFileContent {
+	WXMediaMessage *message = [WXMediaMessage message];
+	message.title = @"ML.pdf";
+	message.description = @"Pro CoreData";
+	[message setThumbImage:[UIImage imageNamed:@"res2.jpg"]];
+	
+	WXFileObject *ext = [WXFileObject object];
+	ext.fileExtension = @"pdf";
+	NSString* filePath = [[NSBundle mainBundle] pathForResource:@"ML" ofType:@"pdf"];
+	ext.fileData = [NSData dataWithContentsOfFile:filePath];
 	
 	message.mediaObject = ext;
 	

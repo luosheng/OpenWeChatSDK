@@ -153,4 +153,13 @@
 @end
 
 @implementation WXFileObject
+
+- (NSDictionary *)infoDictionary {
+	return @{
+					 @"fileExt": self.fileExtension,
+					 @"fileData": self.fileData,
+					 @"objectType": @6,
+					 };
+}
+
 @end
