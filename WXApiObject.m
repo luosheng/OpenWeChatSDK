@@ -1,5 +1,13 @@
 #import "WXApiObject.h"
 
+static NSString *const WXMediaObjectFileDataKey = @"fileData";
+static NSString *const WXMediaObjectMediaUrlKey = @"mediaUrl";
+static NSString *const WXMediaObjectMediaDataUrlKey = @"mediaDataUrl";
+static NSString *const WXMediaObjectMediaLowBandUrlaKey = @"mediaLowBandUrl";
+static NSString *const WXMediaObjectMediaLowBandDataUrlKey = @"mediaLowBandDataUrl";
+static NSString *const WXMediaObjectExtInfoKey = @"extInfo";
+static NSString *const WXMediaObjectFileExtKey = @"fileExt";
+
 @interface WXMediaMessage ()
 
 - (NSDictionary *)infoDictionary;
@@ -107,7 +115,7 @@
 
 - (NSDictionary *)infoDictionary {
 	return @{
-					 @"fileData": self.imageData,
+					 WXMediaObjectFileDataKey: self.imageData,
 					 };
 }
 
@@ -121,8 +129,8 @@
 
 - (NSDictionary *)infoDictionary {
 	return @{
-					 @"mediaDataUrl": self.musicDataUrl,
-					 @"mediaUrl": self.musicUrl,
+					 WXMediaObjectMediaDataUrlKey: self.musicDataUrl,
+					 WXMediaObjectMediaUrlKey: self.musicUrl,
 					 };
 }
 
@@ -136,7 +144,7 @@
 
 - (NSDictionary *)infoDictionary {
 	return @{
-					 @"mediaUrl": self.videoUrl,
+					 WXMediaObjectMediaUrlKey: self.videoUrl,
 					 };
 }
 
@@ -150,7 +158,7 @@
 
 - (NSDictionary *)infoDictionary {
 	return @{
-					 @"mediaUrl": self.webpageUrl,
+					 WXMediaObjectMediaUrlKey: self.webpageUrl,
 					 };
 }
 
@@ -164,9 +172,9 @@
 
 - (NSDictionary *)infoDictionary {
 	return @{
-					 @"extInfo": self.extInfo,
-					 @"mediaUrl": self.url,
-					 @"fileData": self.fileData,
+					 WXMediaObjectExtInfoKey: self.extInfo,
+					 WXMediaObjectMediaUrlKey: self.url,
+					 WXMediaObjectFileDataKey: self.fileData,
 					 };
 }
 
@@ -180,7 +188,7 @@
 
 - (NSDictionary *)infoDictionary {
 	return @{
-					 @"fileData": self.emoticonData,
+					 WXMediaObjectFileDataKey: self.emoticonData,
 					 };
 }
 
@@ -194,9 +202,8 @@
 
 - (NSDictionary *)infoDictionary {
 	return @{
-					 @"fileExt": self.fileExtension,
-					 @"fileData": self.fileData,
-					 @"objectType": @6,
+					 WXMediaObjectFileExtKey: self.fileExtension,
+					 WXMediaObjectFileDataKey: self.fileData,
 					 };
 }
 
