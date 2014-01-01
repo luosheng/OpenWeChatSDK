@@ -71,7 +71,9 @@
 
 - (NSDictionary *)infoDictionary {
 	NSMutableDictionary *info = [NSMutableDictionary dictionary];
-	info[@"thumbData"] = self.thumbData;
+	if (self.thumbData) info[@"thumbData"] = self.thumbData;
+	if (self.title) info[@"title"] = self.title;
+	if (self.description) info[@"description"] = self.description;
 	[info addEntriesFromDictionary:[self.mediaObject infoDictionary]];
 	return info;
 }
@@ -109,6 +111,14 @@
 @end
 
 @implementation WXWebpageObject
+
+- (NSDictionary *)infoDictionary {
+	return @{
+					 @"mediaUrl": self.webpageUrl,
+					 @"objectType": @5,
+					 };
+}
+
 @end
 
 @implementation WXAppExtendObject
