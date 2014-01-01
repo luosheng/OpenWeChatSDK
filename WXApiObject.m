@@ -109,7 +109,7 @@ static NSString *const WXMediaObjectFileExtKey = @"fileExt";
 		@(WXMediaTypeApp): [WXAppExtendObject class],
 		@(WXMediaTypeEmotion): [WXEmoticonObject class],
 		};
-	Class cls = mediaObjectMapping[info[@"objectType"]];
+	Class cls = mediaObjectMapping[@([info[@"objectType"] integerValue])];
 	if (cls) {
 		WXMediaObject *object = [[cls alloc] initWithInfoDictionary:info];
 		return object;
