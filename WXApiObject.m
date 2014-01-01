@@ -105,6 +105,15 @@
 @end
 
 @implementation WXMusicObject
+
+- (NSDictionary *)infoDictionary {
+	return @{
+					 @"mediaDataUrl": self.musicDataUrl,
+					 @"mediaUrl": self.musicUrl,
+					 @"objectType": @3,
+					 };
+}
+
 @end
 
 @implementation WXVideoObject
