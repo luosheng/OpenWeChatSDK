@@ -23,7 +23,18 @@ static NSString *const WXAPIVersion = @"1.4.2";
 + (BOOL)handleOpenURL:(NSURL *)url delegate:(id<WXApiDelegate>)delegate {
 	NSData *data = [[UIPasteboard generalPasteboard] dataForPasteboardType:@"content"];
 	NSDictionary *dict = [NSPropertyListSerialization propertyListWithData:data options:0 format:0 error:0];
-	NSLog(@"%@", dict);
+	NSDictionary *info = [dict objectForKey:WXAppID];
+
+	NSUInteger command = [info[@"command"] integerValue];
+	if (command == 2020) {
+		SendMessageToWXResp *response = [[SendMessageToWXResp alloc] init];
+		response.errCode = [info[@"result"] intValue];
+		
+		if ([delegate respondsToSelector:@selector(onResp:)]) {
+			[delegate onResp:response];
+		}
+	}
+	
 	return NO;
 }
 
