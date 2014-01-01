@@ -188,11 +188,39 @@ static NSString *const LSCellIdentifier = @"Cell";
 }
 
 - (void)sendNonGifContent {
+	WXMediaMessage *message = [WXMediaMessage message];
+	[message setThumbImage:[UIImage imageNamed:@"res5thumb.png"]];
 	
+	WXEmoticonObject *ext = [WXEmoticonObject object];
+	NSString *filePath = [[NSBundle mainBundle] pathForResource:@"res5" ofType:@"jpg"];
+	ext.emoticonData = [NSData dataWithContentsOfFile:filePath];
+	
+	message.mediaObject = ext;
+	
+	SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
+	req.bText = NO;
+	req.message = message;
+	req.scene = self.scene;
+	
+	[WXApi sendReq:req];
 }
 
 - (void)sendGifContent {
+	WXMediaMessage *message = [WXMediaMessage message];
+	[message setThumbImage:[UIImage imageNamed:@"res6thumb.png"]];
 	
+	WXEmoticonObject *ext = [WXEmoticonObject object];
+	NSString *filePath = [[NSBundle mainBundle] pathForResource:@"res6" ofType:@"gif"];
+	ext.emoticonData = [NSData dataWithContentsOfFile:filePath] ;
+	
+	message.mediaObject = ext;
+	
+	SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
+	req.bText = NO;
+	req.message = message;
+	req.scene = self.scene;
+	
+	[WXApi sendReq:req];
 }
 
 @end

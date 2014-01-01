@@ -142,6 +142,14 @@
 @end
 
 @implementation WXEmoticonObject
+
+- (NSDictionary *)infoDictionary {
+	return @{
+					 @"fileData": self.emoticonData,
+					 @"objectType": @8,
+					 };
+}
+
 @end
 
 @implementation WXFileObject
