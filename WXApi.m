@@ -21,6 +21,9 @@ static NSString *const WXAPIVersion = @"1.4.2";
 }
 
 + (BOOL)handleOpenURL:(NSURL *)url delegate:(id<WXApiDelegate>)delegate {
+	NSData *data = [[UIPasteboard generalPasteboard] dataForPasteboardType:@"content"];
+	NSDictionary *dict = [NSPropertyListSerialization propertyListWithData:data options:0 format:0 error:0];
+	NSLog(@"%@", dict);
 	return NO;
 }
 
