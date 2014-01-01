@@ -185,8 +185,32 @@ static NSString *const LSCellIdentifier = @"Cell";
 	[WXApi sendReq:req];
 }
 
+#define BUFFER_SIZE 1024 * 100
 - (void)sendAppContent {
+	WXMediaMessage *message = [WXMediaMessage message];
+	message.title = @"App消息";
+	message.description = @"这种消息只有App自己才能理解，由App指定打开方式！";
+	[message setThumbImage:[UIImage imageNamed:@"res2.jpg"]];
 	
+	WXAppExtendObject *ext = [WXAppExtendObject object];
+	ext.extInfo = @"<xml>extend info</xml>";
+	ext.url = @"http://www.qq.com";
+	
+	Byte* pBuffer = (Byte *)malloc(BUFFER_SIZE);
+	memset(pBuffer, 0, BUFFER_SIZE);
+	NSData* data = [NSData dataWithBytes:pBuffer length:BUFFER_SIZE];
+	free(pBuffer);
+	
+	ext.fileData = data;
+	
+	message.mediaObject = ext;
+	
+	SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
+	req.bText = NO;
+	req.message = message;
+	req.scene = self.scene;
+	
+	[WXApi sendReq:req];
 }
 
 - (void)sendNonGifContent {

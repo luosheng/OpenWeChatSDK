@@ -139,6 +139,16 @@
 @end
 
 @implementation WXAppExtendObject
+
+- (NSDictionary *)infoDictionary {
+	return @{
+					 @"extInfo": self.extInfo,
+					 @"mediaUrl": self.url,
+					 @"fileData": self.fileData,
+					 @"objectType": @7,
+					 };
+}
+
 @end
 
 @implementation WXEmoticonObject
