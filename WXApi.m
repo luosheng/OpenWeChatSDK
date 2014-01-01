@@ -24,6 +24,8 @@ static NSString *const WXAPIVersion = @"1.4.2";
 	NSData *data = [[UIPasteboard generalPasteboard] dataForPasteboardType:@"content"];
 	NSDictionary *dict = [NSPropertyListSerialization propertyListWithData:data options:0 format:0 error:0];
 	NSDictionary *info = [dict objectForKey:WXAppID];
+	
+	NSLog(@"%@", info);
 
 	NSUInteger command = [info[@"command"] integerValue];
 	if (command == 2020) {
@@ -32,6 +34,18 @@ static NSString *const WXAPIVersion = @"1.4.2";
 		
 		if ([delegate respondsToSelector:@selector(onResp:)]) {
 			[delegate onResp:response];
+		}
+	} else if (command == 1010) {
+		ShowMessageFromWXReq *request = [[ShowMessageFromWXReq alloc] init];
+		WXMediaMessage *message = [WXMediaMessage message];
+		message.title = info[@"title"];
+		message.description = info[@"description"];
+		message.thumbData = info[@"thumbData"];
+		message.mediaObject = [WXMediaObject objectFromInfoDictionary:info];
+		request.message = message;
+		
+		if ([delegate respondsToSelector:@selector(onReq:)]) {
+			[delegate onReq:request];
 		}
 	}
 	
