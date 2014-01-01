@@ -66,7 +66,7 @@
 
 - (void)setThumbImage:(UIImage *)image {
 	// TODO: thumb image manipulations
-	self.thumbData = UIImagePNGRepresentation(image);
+	self.thumbData = UIImageJPEGRepresentation(image, 0.85);
 }
 
 - (NSDictionary *)infoDictionary {
