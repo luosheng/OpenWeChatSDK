@@ -31,6 +31,18 @@ enum WXScene {
     WXSceneFavorite = 2,        /**< 收藏       */
 };
 
+typedef enum {
+	WXMediaTypeNone = 0,
+	WXMediaTypeReserved = 1,
+	WXMediaTypeImage = 2,
+	WXMediaTypeMusic = 3,
+	WXMediaTypeVideo = 4,
+	WXMediaTypeWeb = 5,
+	WXMediaTypeFile = 6,
+	WXMediaTypeApp = 7,
+	WXMediaTypeEmotion = 8,
+} WXMediaType;
+
 /*! @brief 该类为微信终端SDK所有请求类的基类
  *
  */

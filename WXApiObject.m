@@ -8,6 +8,7 @@
 
 @interface WXMediaObject ()
 
+- (WXMediaType)mediaType;
 - (NSDictionary *)infoDictionary;
 
 @end
@@ -74,6 +75,7 @@
 	if (self.thumbData) info[@"thumbData"] = self.thumbData;
 	if (self.title) info[@"title"] = self.title;
 	if (self.description) info[@"description"] = self.description;
+	info[@"objectType"] = @([self.mediaObject mediaType]);
 	[info addEntriesFromDictionary:[self.mediaObject infoDictionary]];
 	return info;
 }
@@ -87,6 +89,10 @@
 	return [[self alloc] init];
 }
 
+- (WXMediaType)mediaType {
+	return WXMediaTypeNone;
+}
+
 - (NSDictionary *)infoDictionary {
 	return nil;
 }
@@ -95,10 +101,13 @@
 
 @implementation WXImageObject
 
+- (WXMediaType)mediaType {
+	return WXMediaTypeImage;
+}
+
 - (NSDictionary *)infoDictionary {
 	return @{
 					 @"fileData": self.imageData,
-					 @"objectType": @2,
 					 };
 }
 
@@ -106,11 +115,14 @@
 
 @implementation WXMusicObject
 
+- (WXMediaType)mediaType {
+	return WXMediaTypeMusic;
+}
+
 - (NSDictionary *)infoDictionary {
 	return @{
 					 @"mediaDataUrl": self.musicDataUrl,
 					 @"mediaUrl": self.musicUrl,
-					 @"objectType": @3,
 					 };
 }
 
@@ -118,10 +130,13 @@
 
 @implementation WXVideoObject
 
+- (WXMediaType)mediaType {
+	return WXMediaTypeVideo;
+}
+
 - (NSDictionary *)infoDictionary {
 	return @{
 					 @"mediaUrl": self.videoUrl,
-					 @"objectType": @4,
 					 };
 }
 
@@ -129,10 +144,13 @@
 
 @implementation WXWebpageObject
 
+- (WXMediaType)mediaType {
+	return WXMediaTypeWeb;
+}
+
 - (NSDictionary *)infoDictionary {
 	return @{
 					 @"mediaUrl": self.webpageUrl,
-					 @"objectType": @5,
 					 };
 }
 
@@ -140,12 +158,15 @@
 
 @implementation WXAppExtendObject
 
+- (WXMediaType)mediaType {
+	return WXMediaTypeApp;
+}
+
 - (NSDictionary *)infoDictionary {
 	return @{
 					 @"extInfo": self.extInfo,
 					 @"mediaUrl": self.url,
 					 @"fileData": self.fileData,
-					 @"objectType": @7,
 					 };
 }
 
@@ -153,16 +174,23 @@
 
 @implementation WXEmoticonObject
 
+- (WXMediaType)mediaType {
+	return WXMediaTypeEmotion;
+}
+
 - (NSDictionary *)infoDictionary {
 	return @{
 					 @"fileData": self.emoticonData,
-					 @"objectType": @8,
 					 };
 }
 
 @end
 
 @implementation WXFileObject
+
+- (WXMediaType)mediaType {
+	return WXMediaTypeFile;
+}
 
 - (NSDictionary *)infoDictionary {
 	return @{
