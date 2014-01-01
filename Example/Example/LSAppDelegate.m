@@ -7,7 +7,6 @@
 //
 
 #import "LSAppDelegate.h"
-#import "WXApi.h"
 
 @implementation LSAppDelegate
 
@@ -16,6 +15,16 @@
 	// Override point for customization after application launch.
 	[WXApi registerApp:@"wxd930ea5d5a258f4f" withDescription:@"demo 2.0"];
 	return YES;
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+	return [WXApi handleOpenURL:url delegate:self];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+	BOOL isSuc = [WXApi handleOpenURL:url delegate:self];
+	NSLog(@"url %@ isSuc %d", url, isSuc == YES ? 1 : 0);
+	return isSuc;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
