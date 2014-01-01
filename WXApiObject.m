@@ -117,6 +117,14 @@
 @end
 
 @implementation WXVideoObject
+
+- (NSDictionary *)infoDictionary {
+	return @{
+					 @"mediaUrl": self.videoUrl,
+					 @"objectType": @4,
+					 };
+}
+
 @end
 
 @implementation WXWebpageObject

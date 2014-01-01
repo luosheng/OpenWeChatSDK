@@ -165,7 +165,22 @@ static NSString *const LSCellIdentifier = @"Cell";
 }
 
 - (void)sendVideoContent {
+	WXMediaMessage *message = [WXMediaMessage message];
+	message.title = @"乔布斯访谈";
+	message.description = @"饿着肚皮，傻逼着。";
+	[message setThumbImage:[UIImage imageNamed:@"res7.jpg"]];
 	
+	WXVideoObject *ext = [WXVideoObject object];
+	ext.videoUrl = @"http://v.youku.com/v_show/id_XNTUxNDY1NDY4.html";
+	
+	message.mediaObject = ext;
+	
+	SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
+	req.bText = NO;
+	req.message = message;
+	req.scene = self.scene;
+	
+	[WXApi sendReq:req];
 }
 
 - (void)sendAppContent {
