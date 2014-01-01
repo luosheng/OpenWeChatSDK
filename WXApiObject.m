@@ -97,6 +97,30 @@ static NSString *const WXMediaObjectFileExtKey = @"fileExt";
 	return [[self alloc] init];
 }
 
++ (instancetype)objectFromInfoDictionary:(NSDictionary *)info {
+	NSDictionary *mediaObjectMapping =
+	@{
+		@(WXMediaTypeNone): [self class],
+		@(WXMediaTypeImage): [WXImageObject class],
+		@(WXMediaTypeMusic): [WXMusicObject class],
+		@(WXMediaTypeVideo): [WXVideoObject class],
+		@(WXMediaTypeWeb): [WXWebpageObject class],
+		@(WXMediaTypeFile): [WXFileObject class],
+		@(WXMediaTypeApp): [WXAppExtendObject class],
+		@(WXMediaTypeEmotion): [WXEmoticonObject class],
+		};
+	Class cls = mediaObjectMapping[info[@"objectType"]];
+	if (cls) {
+		WXMediaObject *object = [[cls alloc] initWithInfoDictionary:info];
+		return object;
+	}
+	return nil;
+}
+
+- (id)initWithInfoDictionary:(NSDictionary *)info {
+	return [super init];
+}
+
 - (WXMediaType)mediaType {
 	return WXMediaTypeNone;
 }
@@ -108,6 +132,14 @@ static NSString *const WXMediaObjectFileExtKey = @"fileExt";
 @end
 
 @implementation WXImageObject
+
+- (id)initWithInfoDictionary:(NSDictionary *)info {
+	self = [super initWithInfoDictionary:info];
+	if (self) {
+		_imageData = info[WXMediaObjectFileDataKey];
+	}
+	return self;
+}
 
 - (WXMediaType)mediaType {
 	return WXMediaTypeImage;
@@ -122,6 +154,17 @@ static NSString *const WXMediaObjectFileExtKey = @"fileExt";
 @end
 
 @implementation WXMusicObject
+
+- (id)initWithInfoDictionary:(NSDictionary *)info {
+	self = [super initWithInfoDictionary:info];
+	if (self) {
+		_musicUrl = info[WXMediaObjectMediaUrlKey];
+		_musicDataUrl = info[WXMediaObjectMediaDataUrlKey];
+		_musicLowBandUrl = info[WXMediaObjectMediaLowBandUrlaKey];
+		_musicLowBandDataUrl = info[WXMediaObjectMediaLowBandDataUrlKey];
+	}
+	return self;
+}
 
 - (WXMediaType)mediaType {
 	return WXMediaTypeMusic;
@@ -138,6 +181,15 @@ static NSString *const WXMediaObjectFileExtKey = @"fileExt";
 
 @implementation WXVideoObject
 
+- (id)initWithInfoDictionary:(NSDictionary *)info {
+	self = [super initWithInfoDictionary:info];
+	if (self) {
+		_videoUrl = info[WXMediaObjectMediaUrlKey];
+		_videoLowBandUrl = info[WXMediaObjectMediaLowBandUrlaKey];
+	}
+	return self;
+}
+
 - (WXMediaType)mediaType {
 	return WXMediaTypeVideo;
 }
@@ -152,6 +204,14 @@ static NSString *const WXMediaObjectFileExtKey = @"fileExt";
 
 @implementation WXWebpageObject
 
+- (id)initWithInfoDictionary:(NSDictionary *)info {
+	self = [super initWithInfoDictionary:info];
+	if (self) {
+		_webpageUrl = info[WXMediaObjectMediaUrlKey];
+	}
+	return self;
+}
+
 - (WXMediaType)mediaType {
 	return WXMediaTypeWeb;
 }
@@ -165,6 +225,16 @@ static NSString *const WXMediaObjectFileExtKey = @"fileExt";
 @end
 
 @implementation WXAppExtendObject
+
+- (id)initWithInfoDictionary:(NSDictionary *)info {
+	self = [super initWithInfoDictionary:info];
+	if (self) {
+		_extInfo = info[WXMediaObjectExtInfoKey];
+		_url = info[WXMediaObjectMediaUrlKey];
+		_fileData = info[WXMediaObjectFileDataKey];
+	}
+	return self;
+}
 
 - (WXMediaType)mediaType {
 	return WXMediaTypeApp;
@@ -182,6 +252,14 @@ static NSString *const WXMediaObjectFileExtKey = @"fileExt";
 
 @implementation WXEmoticonObject
 
+- (id)initWithInfoDictionary:(NSDictionary *)info {
+	self = [super initWithInfoDictionary:info];
+	if (self) {
+		_emoticonData = info[WXMediaObjectFileDataKey];
+	}
+	return self;
+}
+
 - (WXMediaType)mediaType {
 	return WXMediaTypeEmotion;
 }
@@ -195,6 +273,15 @@ static NSString *const WXMediaObjectFileExtKey = @"fileExt";
 @end
 
 @implementation WXFileObject
+
+- (id)initWithInfoDictionary:(NSDictionary *)info {
+	self = [super initWithInfoDictionary:info];
+	if (self) {
+		_fileExtension = info[WXMediaObjectFileExtKey];
+		_fileData = info[WXMediaObjectFileDataKey];
+	}
+	return self;
+}
 
 - (WXMediaType)mediaType {
 	return WXMediaTypeFile;

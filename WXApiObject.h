@@ -206,6 +206,8 @@ typedef enum {
 @interface WXMediaObject : NSObject
 
 + (instancetype)object;
++ (instancetype)objectFromInfoDictionary:(NSDictionary *)info;
+- (instancetype)initWithInfoDictionary:(NSDictionary *)info;
 
 @end
 
